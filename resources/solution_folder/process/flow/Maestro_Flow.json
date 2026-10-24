@@ -1,0 +1,57 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Maestro Flow",
+    "kind": "process",
+    "type": "flow",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "567d85eb-9b83-4c25-897e-2ebef1d77ab6",
+    "isOverridable": true,
+    "dependencies": [
+      {
+        "name": "Maestro Flow",
+        "kind": "package"
+      }
+    ],
+    "runtimeDependencies": [],
+    "files": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "runtimeProfile": "Standard",
+      "entryPointUniqueId": null,
+      "inputArgumentsSchema": null,
+      "outputArgumentsSchema": null,
+      "inputArgumentsSchemaV2": null,
+      "outputArgumentsSchemaV2": null,
+      "type": "Flow",
+      "name": "Maestro Flow",
+      "description": null,
+      "package": {
+        "key": "96386fc9-0a02-4164-92de-248506304456"
+      },
+      "packageName": "Invoice_Verification_Process.flow.Maestro.Flow",
+      "packageVersion": null,
+      "entryPointName": null,
+      "inputArguments": null,
+      "hiddenForAttendedUser": false,
+      "alwaysRunning": false,
+      "autoStartProcess": false,
+      "targetFrameworkValue": "Portable",
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "retentionBucketRef": null,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180,
+      "staleRetentionBucketRef": null,
+      "entryPoints": null,
+      "connections": null,
+      "tags": []
+    },
+    "locks": [],
+    "key": "46a7ae68-9012-4b17-9a94-c865bf6cbd15"
+  }
+}

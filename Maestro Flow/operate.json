@@ -1,0 +1,12 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/operate",
+  "projectId": "3b91fa8f-6374-472b-bd29-e381fa877239",
+  "main": "content/new.bpmn#emailReceived2",
+  "contentType": "Flow",
+  "targetFramework": "Portable",
+  "runtimeOptions": {
+    "requiresUserInteraction": false,
+    "isAttended": false,
+    "profile": "Standard"
+  }
+}

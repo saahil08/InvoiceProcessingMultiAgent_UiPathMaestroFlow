@@ -1,0 +1,75 @@
+{
+  "docVersion": "1.0.0",
+  "tenants": [
+    {
+      "tenantKey": "35384878-ecfb-49e8-8bcb-d4e4f39eb74d",
+      "resources": [
+        {
+          "solutionResourceKey": "b8e2cd0c-c2e2-4387-90be-a06806fccbef",
+          "reprovisioningIndex": 0,
+          "overwrite": {
+            "resourceKey": "b8e2cd0c-c2e2-4387-90be-a06806fccbef",
+            "resourceName": "saahil.shaikh54@gmail.com",
+            "folderKey": "adcd3c14-be29-43c5-b7e8-aea0c99111c2",
+            "folderFullyQualifiedName": "Shared",
+            "folderPath": "adcd3c14-be29-43c5-b7e8-aea0c99111c2",
+            "type": "Reference",
+            "kind": "connection"
+          }
+        },
+        {
+          "solutionResourceKey": "65af0b01-e5b9-f111-a6a9-000d3ab5dcae",
+          "reprovisioningIndex": 0,
+          "overwrite": {
+            "resourceKey": "65af0b01-e5b9-f111-a6a9-000d3ab5dcae",
+            "resourceName": "Purchase_Orders",
+            "folderKey": "adcd3c14-be29-43c5-b7e8-aea0c99111c2",
+            "folderFullyQualifiedName": "Shared",
+            "folderPath": "adcd3c14-be29-43c5-b7e8-aea0c99111c2",
+            "type": "Reference",
+            "kind": "entity"
+          }
+        },
+        {
+          "solutionResourceKey": "72e53256-5ac0-4127-b5f2-83e2ea095de0",
+          "reprovisioningIndex": 0,
+          "overwrite": {
+            "resourceKey": "72e53256-5ac0-4127-b5f2-83e2ea095de0",
+            "resourceName": "saahil.shaikh54@gmail.com",
+            "folderKey": "adcd3c14-be29-43c5-b7e8-aea0c99111c2",
+            "folderFullyQualifiedName": "Shared",
+            "folderPath": "adcd3c14-be29-43c5-b7e8-aea0c99111c2",
+            "type": "Reference",
+            "kind": "connection"
+          }
+        },
+        {
+          "solutionResourceKey": "300d41f6-bec3-4996-b534-08df1aaaaf73",
+          "reprovisioningIndex": 0,
+          "overwrite": {
+            "resourceKey": "300d41f6-bec3-4996-b534-08df1aaaaf73",
+            "resourceName": "Vendor_Contracts",
+            "folderKey": "adcd3c14-be29-43c5-b7e8-aea0c99111c2",
+            "folderFullyQualifiedName": "Shared",
+            "folderPath": "adcd3c14-be29-43c5-b7e8-aea0c99111c2",
+            "type": "Reference",
+            "kind": "index"
+          }
+        },
+        {
+          "solutionResourceKey": "3f7db26c-0b77-49e7-b945-8f36fcf84ab0",
+          "reprovisioningIndex": 0,
+          "overwrite": {
+            "resourceKey": "3f7db26c-0b77-49e7-b945-8f36fcf84ab0",
+            "resourceName": "Vendor_Contracts",
+            "folderKey": "adcd3c14-be29-43c5-b7e8-aea0c99111c2",
+            "folderFullyQualifiedName": "Shared",
+            "folderPath": "adcd3c14-be29-43c5-b7e8-aea0c99111c2",
+            "type": "Reference",
+            "kind": "bucket"
+          }
+        }
+      ]
+    }
+  ]
+}

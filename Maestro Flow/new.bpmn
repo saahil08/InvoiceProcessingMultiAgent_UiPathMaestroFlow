@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:uipath="http://uipath.org/schema/bpmn" exporter="UiPath Flow (https://uipath.com)" exporterVersion="development">
+  <bpmn:process id="Process_1" name="Flow Process">
+    <bpmn:extensionElements>
+      <uipath:variables version="v1">
+        <uipath:inputOutput id="dataextractionagent1.error" name="error" type="object" elementId="dataextractionagent1" />
+        <uipath:inputOutput id="script1.output" name="output" type="object" elementId="script1" />
+        <uipath:inputOutput id="script1.error" name="error" type="object" elementId="script1" />
+        <uipath:inputOutput id="queryEntityRecords1.output" name="output" type="jsonSchema" elementId="queryEntityRecords1" />
+        <uipath:inputOutput id="decision1.matchedCase" name="matchedCase" type="string" elementId="decision1" />
+        <uipath:inputOutput id="decision1.matchedCaseId" name="matchedCaseId" type="string" elementId="decision1" />
+        <uipath:inputOutput id="discrepancyInvestigationAgent1.error" name="error" type="object" elementId="discrepancyInvestigationAgent1" />
+        <uipath:inputOutput id="vendorResearchAgent1.error" name="error" type="object" elementId="vendorResearchAgent1" />
+        <uipath:inputOutput id="autonomousAgent1.error" name="error" type="object" elementId="autonomousAgent1" />
+        <uipath:inputOutput id="quickForm1.output" name="output" type="object" elementId="quickForm1" />
+        <uipath:inputOutput id="quickForm1.status" name="status" type="string" elementId="quickForm1" />
+        <uipath:inputOutput id="replyToEmail1.error" name="error" type="object" elementId="replyToEmail1" />
+        <uipath:inputOutput id="autonomousAgent1.output" name="output" type="object" elementId="autonomousAgent1" />
+        <uipath:inputOutput id="emailReceived2.output" name="output" type="jsonSchema" elementId="emailReceived2" />
+        <uipath:inputOutput id="dataextractionagent1.output" name="output" type="jsonSchema" elementId="dataextractionagent1" />
+        <uipath:inputOutput id="discrepancyInvestigationAgent1.output" name="output" type="jsonSchema" elementId="discrepancyInvestigationAgent1" />
+        <uipath:inputOutput id="vendorResearchAgent1.output" name="output" type="jsonSchema" elementId="vendorResearchAgent1" />
+        <uipath:inputOutput id="replyToEmail1.output" name="output" type="jsonSchema" elementId="replyToEmail1" />
+      </uipath:variables>
+      <uipath:bindings version="v1">
+        <uipath:binding id="bFfrqE4UL" name="uipath-google-gmail connection" type="string" default="b8e2cd0c-c2e2-4387-90be-a06806fccbef" resource="connection" resourceKey="b8e2cd0c-c2e2-4387-90be-a06806fccbef" propertyAttribute="ConnectionId" />
+        <uipath:binding id="bYTHvyrGd" name="name" type="string" default="DataExtractionAgent" resource="process" resourceSubType="Agent" resourceKey="690a4503-8b3d-4ea9-8283-57e1fc301f2a" propertyAttribute="name" />
+        <uipath:binding id="bfVuKgd39" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="690a4503-8b3d-4ea9-8283-57e1fc301f2a" propertyAttribute="folderPath" />
+        <uipath:binding id="bQBZpLFQA" name="Purchase_Orders" type="string" default="Purchase_Orders" resource="Entity" resourceKey="65af0b01-e5b9-f111-a6a9-000d3ab5dcae" propertyAttribute="name" />
+        <uipath:binding id="bap3JS209" name="Purchase_OrdersFolder" type="string" default="adcd3c14-be29-43c5-b7e8-aea0c99111c2" resource="Entity" resourceKey="65af0b01-e5b9-f111-a6a9-000d3ab5dcae" propertyAttribute="folderKey" />
+        <uipath:binding id="bJAP7Ajq4" name="name" type="string" default="Discrepancy Investigation agent" resource="process" resourceSubType="Agent" resourceKey="cfe8f0ab-fc5e-4cff-92d5-0b4aa3d4aa10" propertyAttribute="name" />
+        <uipath:binding id="bn7m099fK" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="cfe8f0ab-fc5e-4cff-92d5-0b4aa3d4aa10" propertyAttribute="folderPath" />
+        <uipath:binding id="bM7UaVlDc" name="name" type="string" default="Vendor Research agent" resource="process" resourceSubType="Agent" resourceKey="1a2f3417-1b20-4914-a886-9bad8cb3850b" propertyAttribute="name" />
+        <uipath:binding id="bdOgK6ObO" name="folderPath" type="string" resource="process" resourceSubType="Agent" resourceKey="1a2f3417-1b20-4914-a886-9bad8cb3850b" propertyAttribute="folderPath" />
+        <uipath:binding id="b77CeQIo1" name="FolderKey" type="string" default="adcd3c14-be29-43c5-b7e8-aea0c99111c2" resource="connection" resourceKey="b8e2cd0c-c2e2-4387-90be-a06806fccbef" propertyAttribute="folderKey" />
+      </uipath:bindings>
+      <uipath:maestroEngineVersion version="v2" />
+    </bpmn:extensionElements>
+    <bpmn:startEvent id="emailReceived2" name="Email Received">
+      <bpmn:extensionElements>
+        <uipath:entryPointId value="d894f10c-1133-4d96-8fcc-7099a9ac2f1b" />
+        <uipath:event version="v1">
+          <uipath:type value="Intsvc.EventTrigger" version="v1" />
+          <uipath:context>
+            <uipath:input name="connectorKey" type="string" value="uipath-google-gmail" />
+            <uipath:input name="connection" type="string" value="=bindings.bFfrqE4UL" />
+            <uipath:input name="resourceKey" type="string" value="b8e2cd0c-c2e2-4387-90be-a06806fccbef" />
+            <uipath:input name="folderKey" type="string" value="=bindings.b77CeQIo1" />
+            <uipath:input name="method" type="string" />
+            <uipath:input name="path" type="string" />
+            <uipath:input name="objectName" type="string" value="Message" />
+            <uipath:input name="operation" type="string" value="EMAIL_RECEIVED" />
+            <uipath:input name="eventMode" type="string" value="polling" />
+            <uipath:input name="metadata" type="json"><![CDATA[{"activityPropertyConfiguration":{"objectName":"Message","eventType":"EMAIL_RECEIVED","eventMode":"polling","filterExpression":"(ParentFolders[?ID=='INBOX'])","configuration":"=jsonString:{\"essentialConfiguration\":{\"connectorVersion\":\"1.24.9\",\"executionType\":null,\"scriptRef\":null,\"customFieldsRequestDetails\":null,\"instanceParameters\":{\"connectorKey\":\"uipath-google-gmail\",\"objectName\":\"Message\",\"activityType\":\"CuratedTrigger\",\"version\":\"1.0.0\",\"eventOperation\":\"EMAIL_RECEIVED\",\"eventMode\":\"polling\",\"supportsStreaming\":false},\"objectName\":\"Message\",\"packageVersion\":\"1.0.0\",\"httpMethod\":null,\"path\":null,\"filter\":null},\"optionalConfiguration\":{\"_textBlocks\":[],\"objectActions\":null,\"connectorName\":\"Gmail\",\"agentIdentity\":null,\"maxPageSize\":null,\"jobArguments\":null,\"isAutopilotInvalidConfig\":false,\"additionalHeaders\":null,\"cachedLookupValues\":[[\"ParentFolders_array_sub_ID\",[{\"id\":\"INBOX\",\"displayColumns\":[\"Inbox\"],\"stringFormatDisplayColumns\":\"\"}]]],\"cachedBrowserItems\":[[\"ParentFolders_array_sub_ID\",{\"mimeType\":null,\"iconUri\":null,\"fullName\":\"Inbox\",\"isFolder\":true,\"metadata\":[[\"messageListVisibility\",\"hide\"],[\"parentReference\",\"\"],[\"isFolder\",\"true\"],[\"displayName\",\"Inbox\"],[\"name\",\"INBOX\"],[\"id\",\"INBOX\"],[\"labelListVisibility\",\"labelShow\"],[\"type\",\"system\"],[\"referenceID\",\"inbox\"]],\"id\":\"INBOX\"}]],\"cachedPropertyMappings\":[],\"primaryKeys\":[],\"objectDisplayName\":\"Normalizedmessage\",\"baseObject\":null,\"eventMode\":[\"polling\"],\"eventOperation\":null,\"language\":\"b8e2cd0c-c2e2-4387-90be-a06806fccbef\",\"hasBreakingChanges\":false,\"debugDisabled\":false,\"hasStaticLeftOperandFilterBuilder\":false,\"isV2TriggerBaseUrl\":false,\"fieldsContainer\":{\"outputTypeDefinition\":\"{\\\"Attachments\\\":{\\\"ID\\\":string;\\\"MIMEType\\\":string;\\\"Name\\\":string;\\\"Size\\\":number}[];\\\"BCC\\\":{\\\"Email\\\":string;\\\"Name\\\":string}[];\\\"Body\\\":string;\\\"CC\\\":{\\\"Email\\\":string;\\\"Name\\\":string}[];\\\"Categories\\\":{\\\"ID\\\":string;\\\"Name\\\":string}[];\\\"From\\\":{\\\"Email\\\":string;\\\"Name\\\":string};\\\"HasAttachments\\\":boolean;\\\"ID\\\":string;\\\"Importance\\\":string;\\\"ParentFolders\\\":{\\\"ID\\\":string;\\\"Name\\\":string}[];\\\"Sensitivity\\\":string;\\\"Subject\\\":string;\\\"ThreadID\\\":string;\\\"To\\\":{\\\"Email\\\":string;\\\"Name\\\":string}[];\\\"Type\\\":string}\",\"outputJsonSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\",\"type\":\"object\",\"properties\":{\"Attachments[*]\":{\"title\":\"Attachments\",\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/Attachments[*]\"}},\"BCC[*]\":{\"title\":\"Bcc\",\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/BCC[*]\"}},\"CC[*]\":{\"title\":\"Cc\",\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/CC[*]\"}},\"HasAttachments\":{\"title\":\"With attachments only\",\"type\":\"boolean\"},\"Categories[*]\":{\"title\":\"Categories\",\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/Categories[*]\"}},\"To[*]\":{\"title\":\"To\",\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/To[*]\"}},\"From\":{\"title\":\"From\",\"$ref\":\"#/definitions/From\"},\"Subject\":{\"title\":\"Subject\",\"type\":\"string\"},\"ParentFolders[*]\":{\"title\":\"Parent folders\",\"type\":\"array\",\"items\":{\"$ref\":\"#/definitions/ParentFolders[*]\"}},\"Importance\":{\"title\":\"Importance\",\"type\":\"string\"},\"Sensitivity\":{\"title\":\"Sensitivity\",\"type\":\"string\"},\"Type\":{\"title\":\"Type\",\"type\":\"string\"},\"ThreadID\":{\"title\":\"Thread\",\"type\":\"string\"},\"ID\":{\"title\":\"Id\",\"type\":\"string\"},\"Body\":{\"title\":\"Body\",\"type\":\"string\"}},\"definitions\":{\"Attachments[*]\":{\"type\":\"object\",\"properties\":{\"MIMEType\":{\"title\":\"Attachment mime type\",\"type\":\"string\"},\"ID\":{\"title\":\"Attachment ID\",\"type\":\"string\"},\"Name\":{\"title\":\"Attachment name\",\"type\":\"string\"},\"Size\":{\"title\":\"Attachment size\",\"type\":\"integer\"}}},\"BCC[*]\":{\"type\":\"object\",\"properties\":{\"Name\":{\"title\":\"Bcc name\",\"type\":\"string\"},\"Email\":{\"title\":\"Bcc email\",\"type\":\"string\"}}},\"CC[*]\":{\"type\":\"object\",\"properties\":{\"Email\":{\"title\":\"Cc\",\"type\":\"string\"},\"Name\":{\"title\":\"Cc name\",\"type\":\"string\"}}},\"Categories[*]\":{\"type\":\"object\",\"properties\":{\"ID\":{\"title\":\"Category ID\",\"type\":\"string\"},\"Name\":{\"title\":\"Category name\",\"type\":\"string\"}}},\"To[*]\":{\"type\":\"object\",\"properties\":{\"Email\":{\"title\":\"To\",\"type\":\"string\"},\"Name\":{\"title\":\"Recipient name\",\"type\":\"string\"}}},\"From\":{\"type\":\"object\",\"properties\":{\"Email\":{\"title\":\"From\",\"type\":\"string\"},\"Name\":{\"title\":\"Sender name\",\"type\":\"string\"}}},\"ParentFolders[*]\":{\"type\":\"object\",\"properties\":{\"ID\":{\"title\":\"Email folder or label\",\"type\":\"string\"},\"Name\":{\"title\":\"Label\",\"type\":\"string\"}}}}},\"hasFileOutput\":false,\"populateOutputFields\":true,\"inputFields\":[{\"typeScriptDefinition\":null,\"useUrlInput\":false,\"id\":\"ParentFolders_array_sub_ID\",\"name\":\"ParentFolders[*].ID\",\"displayName\":\"Email folder or label\",\"description\":\"Email folder or label\",\"type\":\"string\",\"primaryKey\":false,\"lookup\":{\"objectName\":\"folder\",\"lookupNames\":[\"displayName\"],\"lookupValue\":\"id\",\"path\":\"/folder\",\"childPath\":\"/folder?parentReference={name}\",\"hydration\":{\"url\":\"/folder/{id}\",\"method\":\"GETBYID\"}},\"design\":{\"displayName\":\"Email folder or label\",\"description\":\"Email folder or label\",\"component\":\"FolderPicker\",\"textBlocks\":null,\"dictionaryWidget\":null,\"selection\":null,\"solutionResourceKind\":null,\"solutionResourceSubTypes\":null,\"exposeAsSubBinding\":true,\"enableURLInput\":null},\"fieldActions\":[],\"searchable\":false,\"searchableJoins\":null,\"required\":true,\"request\":true,\"response\":false,\"responseCurated\":false,\"fieldLocation\":\"none\",\"onCanvas\":null,\"isJitField\":false,\"isFieldActionParent\":false,\"isMainResponseField\":false,\"isMethodParameter\":false,\"isBackgroundField\":false,\"filterTree\":null,\"filterNeedsRefresh\":null,\"arrayInputPaths\":null,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":true,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String[*]\",\"isValueType\":true},\"forceExpressionEditor\":false,\"requiredGroups\":null,\"disableExpressions\":true,\"backingField\":null,\"searchableDisplayName\":null,\"selectedResourceId\":null,\"sampleValue\":null}],\"outputFields\":[{\"typeScriptDefinition\":null,\"useUrlInput\":false,\"resolvedUrl\":null,\"id\":\"Normalizedmessage\",\"name\":\"Normalizedmessage\",\"displayName\":\"Normalizedmessage\",\"description\":\"\",\"type\":\"GeneratedNormalizedMessage_Trigger\",\"sortOrder\":null,\"format\":null,\"mask\":null,\"defaultValue\":null,\"primaryKey\":false,\"lookup\":null,\"enum\":null,\"design\":null,\"fieldActions\":null,\"searchable\":false,\"searchableOperators\":null,\"searchableNames\":null,\"searchableJoins\":null,\"required\":false,\"request\":false,\"response\":false,\"responseCurated\":false,\"fieldLocation\":\"output\",\"onCanvas\":null,\"isJitField\":true,\"isFieldActionParent\":false,\"isMainResponseField\":true,\"isMethodParameter\":false,\"isBackgroundField\":false,\"filterTree\":null,\"filterNeedsRefresh\":null,\"arrayInputPaths\":null,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"Object\",\"assemblyQualifiedName\":\"Object\",\"isValueType\":false},\"forceExpressionEditor\":false,\"requiredGroups\":null,\"disableExpressions\":false,\"backingField\":null,\"searchableDisplayName\":null,\"selectedResourceId\":null}],\"jitTypeNeedsRefresh\":false,\"eventFields\":[{\"name\":\"BCC[*].Email\",\"displayName\":\"BCC email\",\"type\":\"string\",\"sampleValue\":null,\"isCuratedEventField\":true,\"nativeType\":\"string\",\"order\":1,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":true,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String[*]\",\"isValueType\":true}},{\"name\":\"Body\",\"displayName\":\"Body\",\"type\":\"string\",\"sampleValue\":null,\"isCuratedEventField\":true,\"nativeType\":\"string\",\"order\":1,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String\",\"isValueType\":true}},{\"name\":\"CC[*].Email\",\"displayName\":\"CC\",\"type\":\"string\",\"sampleValue\":null,\"isCuratedEventField\":true,\"nativeType\":\"string\",\"order\":1,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":true,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String[*]\",\"isValueType\":true}},{\"name\":\"From.Email\",\"displayName\":\"From\",\"type\":\"string\",\"sampleValue\":null,\"isCuratedEventField\":true,\"nativeType\":\"string\",\"order\":1,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String\",\"isValueType\":true}},{\"name\":\"ParentFolders[*].Name\",\"displayName\":\"Label\",\"type\":\"string\",\"reference\":{\"objectName\":\"folder\",\"lookupNames\":[\"displayName\"],\"lookupValue\":\"id\",\"path\":\"/folder\",\"childPath\":\"/folder?parentReference={name}\",\"hydration\":{\"url\":\"/folder/{id}\",\"method\":\"GETBYID\"}},\"design\":{\"component\":\"FolderPicker\"},\"sampleValue\":null,\"isCuratedEventField\":true,\"nativeType\":\"string\",\"order\":1,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":true,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String[*]\",\"isValueType\":true}},{\"name\":\"Subject\",\"displayName\":\"Subject\",\"type\":\"string\",\"sampleValue\":null,\"isCuratedEventField\":true,\"nativeType\":\"string\",\"order\":1,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String\",\"isValueType\":true}},{\"name\":\"ThreadID\",\"displayName\":\"Thread\",\"type\":\"string\",\"reference\":{\"objectName\":\"NormalizedMessage\",\"lookupNames\":[\"Subject\"],\"lookupValue\":\"ThreadID\",\"path\":\"/NormalizedMessage/{ThreadID}\"},\"sampleValue\":null,\"isCuratedEventField\":false,\"nativeType\":\"string\",\"order\":1,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String\",\"isValueType\":true}},{\"name\":\"To[*].Email\",\"displayName\":\"To\",\"type\":\"string\",\"sampleValue\":null,\"isCuratedEventField\":true,\"nativeType\":\"string\",\"order\":1,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":true,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String[*]\",\"isValueType\":true}},{\"name\":\"HasAttachments\",\"displayName\":\"With attachments only\",\"type\":\"boolean\",\"sampleValue\":null,\"isCuratedEventField\":true,\"nativeType\":\"boolean\",\"order\":1,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"Boolean\",\"assemblyQualifiedName\":\"Boolean\",\"isValueType\":true}}]},\"filterNeedsRefresh\":false,\"filterExpression\":null,\"obsoleteEventFields\":false,\"filterWidget\":null}}","uiPathActivityTypeId":"1d19e4f4-2817-3aeb-b71c-2dafca7b1da2","errorState":{"issues":[]}},"telemetryData":{"connectorKey":"uipath-google-gmail","connectorName":"Gmail","objectName":"Message","objectDisplayName":"Normalizedmessage","primaryKeyName":""},"bindings":[{"resource":"Property","key":"emailReceived2","value":{"ParentFolders[*].ID":{"defaultValue":"INBOX","isExpression":false}},"activityDisplayName":"connector-activity","metadata":{"ActivityName":"connector-activity","BindingsVersion":"2.2","ObjectName":"Message","Operation":"EMAIL_RECEIVED","ParentResourceKey":"EventTrigger.b8e2cd0c-c2e2-4387-90be-a06806fccbef","TriggerCreateParameters":"ParentFolders[*].ID","DebugQueryParameters":"ParentFolders[*].ID"}}]}]]></uipath:input>
+          </uipath:context>
+          <uipath:input name="body" type="json" target="body"><![CDATA[{"filters":{"expression":"(ParentFolders[?ID=='INBOX'])"},"queryParams":{"ParentFolders[*].ID":"INBOX"}}]]></uipath:input>
+          <uipath:output name="emailReceived2.output" type="jsonSchema" source="=response" var="emailReceived2.output" />
+        </uipath:event>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>edge_emailReceived2-output-uipath.core.agent.690a4503-8b3d-4ea9-8283-57e1fc301f2a-1790453529899-input</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="emailReceived2_EventDefinition" />
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="dataextractionagent1" name="DataExtractionAgent">
+      <bpmn:extensionElements>
+        <uipath:activity version="v1">
+          <uipath:type value="Orchestrator.StartAgentJob" version="v2" />
+          <uipath:context>
+            <uipath:input name="name" type="string" value="=bindings.bYTHvyrGd" />
+            <uipath:input name="folderPath" type="string" value="=bindings.bfVuKgd39" />
+            <uipath:input name="_label" type="string" value="DataExtractionAgent" />
+            <uipath:inputSchema type="jsonSchema"><![CDATA[{"$schema":"http://json-schema.org/draft-07/schema#","type":"object","properties":{"InvoiceText":{"type":"string"}},"required":[]}]]></uipath:inputSchema>
+          </uipath:context>
+          <uipath:input name="JobArguments" type="json" target="bodyField"><![CDATA[{"InvoiceText":"=js:vars.emailReceived2.output.Body"}]]></uipath:input>
+          <uipath:output name="dataextractionagent1.output" type="object" source="=this" var="dataextractionagent1.output" />
+          <uipath:output name="dataextractionagent1.error" type="object" source="=Error" var="dataextractionagent1.error" />
+        </uipath:activity>
+      </bpmn:extensionElements>
+      <bpmn:incoming>edge_emailReceived2-output-uipath.core.agent.690a4503-8b3d-4ea9-8283-57e1fc301f2a-1790453529899-input</bpmn:incoming>
+      <bpmn:outgoing>edge_dataextractionagent1-output-core.action.script-1790453672618-input</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:scriptTask id="script1" name="Script" scriptFormat="JavaScript">
+      <bpmn:extensionElements>
+        <uipath:mapping version="v1">
+          <uipath:type value="BPMN.Variables" version="v1" />
+          <uipath:context>
+            <uipath:inputSchema type="jsonSchema"><![CDATA[{"$schema":"http://json-schema.org/draft-07/schema#","type":"object","properties":{"vars":{"type":"object"},"metadata":{"type":"object"}},"required":[]}]]></uipath:inputSchema>
+          </uipath:context>
+          <uipath:input name="args" type="json" target="bodyField"><![CDATA[{"vars":"=vars","metadata":"=metadata"}]]></uipath:input>
+          <uipath:output name="script1.output" type="object" source="=result.response" var="script1.output" />
+          <uipath:output name="script1.error" type="object" source="=Error" var="script1.error" />
+        </uipath:mapping>
+        <uipath:scriptVersion value="v3" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>edge_dataextractionagent1-output-core.action.script-1790453672618-input</bpmn:incoming>
+      <bpmn:outgoing>edge_script1-success-core.datafabric.read-1790453968676-input</bpmn:outgoing>
+      <bpmn:script><![CDATA[// Parse the JSON string
+const invoice = JSON.parse(vars.dataextractionagent1.output.invoiceData);
+
+// Helper: safely read a field
+const readField = (fieldName) => invoice?.[fieldName] ?? null;
+
+// Helper: replace spaces with underscores
+const sanitizeFieldName = (fieldName) =>
+  fieldName?.replace(/\s+/g, "_") || "";
+
+// Build the result object
+const result = {
+  invoice: {},
+  vendor: {},
+  lineItems: []
+};
+
+// --------------------
+// Invoice fields
+// --------------------
+const invoiceFields = [
+  "invoice_number",
+  "issue_date",
+  "due_date",
+  "po_reference",
+  "currency",
+  "subtotal",
+  "tax",
+  "total"
+];
+
+for (const field of invoiceFields) {
+  result.invoice[sanitizeFieldName(field)] = readField(field);
+}
+
+// --------------------
+// Vendor fields
+// --------------------
+const vendorFields = [
+  "vendor_name",
+  "vendor_address",
+  "remit_to_address",
+  "contact_email"
+];
+
+for (const field of vendorFields) {
+  result.vendor[sanitizeFieldName(field)] = readField(field);
+}
+
+// --------------------
+// Line Items
+// --------------------
+const lineItems = readField("line_items") || [];
+
+for (const row of lineItems) {
+  const item = {};
+
+  for (const [key, value] of Object.entries(row)) {
+    item[sanitizeFieldName(key)] = value;
+  }
+
+  result.lineItems.push(item);
+}
+
+return result;]]></bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:task id="queryEntityRecords1" name="Query entity records">
+      <bpmn:extensionElements>
+        <uipath:mapping version="v1">
+          <uipath:type value="BPMN.Variables" version="v1" />
+          <uipath:context>
+            <uipath:inputSchema type="jsonSchema"><![CDATA[{"$schema":"http://json-schema.org/draft-07/schema#","type":"object","properties":{"entity":{"type":"object"}},"required":[]}]]></uipath:inputSchema>
+          </uipath:context>
+          <uipath:input name="body" type="json" target="body"><![CDATA[{"entity":"=datafabric[bindings.bQBZpLFQA?folderPath=bindings.bap3JS209][\"qem:{\"selectedFields\":[\"CreateTime\",\"CreatedBy\",\"Id\",\"UpdateTime\",\"UpdatedBy\",\"freightAmount\",\"lineItems\",\"poDate\",\"poNumber\",\"subtotal\",\"taxAmount\",\"totalAmount\",\"vendorName\"],\"filterGroup\":{\"logicalOperator\":0,\"queryFilters\":[{\"fieldName\":\"poNumber\",\"operator\":\"=\",\"value\":\"=js:vars.script1.output.invoice.po_reference\"}]},\"limit\":100}\"]"}]]></uipath:input>
+          <uipath:output name="queryEntityRecords1.output" type="object" source="=datafabric.__vdoself_queryEntityRecords1" var="queryEntityRecords1.output" />
+        </uipath:mapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>edge_script1-success-core.datafabric.read-1790453968676-input</bpmn:incoming>
+      <bpmn:outgoing>edge_queryEntityRecords1-output-core.logic.decision-1790454254842-input</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:inclusiveGateway id="decision1" name="Decision">
+      <bpmn:incoming>edge_queryEntityRecords1-output-core.logic.decision-1790454254842-input</bpmn:incoming>
+      <bpmn:outgoing>edge_decision1-true-uipath.core.agent.cfe8f0ab-fc5e-4cff-92d5-0b4aa3d4aa10-1790455197558-input</bpmn:outgoing>
+      <bpmn:outgoing>edge_decision1-false-uipath.core.agent.1a2f3417-1b20-4914-a886-9bad8cb3850b-1790455207879-input</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:serviceTask id="discrepancyInvestigationAgent1" name="Discrepancy Investigation agent">
+      <bpmn:extensionElements>
+        <uipath:activity version="v1">
+          <uipath:type value="Orchestrator.StartAgentJob" version="v2" />
+          <uipath:context>
+            <uipath:input name="name" type="string" value="=bindings.bJAP7Ajq4" />
+            <uipath:input name="folderPath" type="string" value="=bindings.bn7m099fK" />
+            <uipath:input name="_label" type="string" value="Discrepancy Investigation agent" />
+            <uipath:inputSchema type="jsonSchema"><![CDATA[{"$schema":"http://json-schema.org/draft-07/schema#","type":"object","properties":{"invoiceData":{"type":"string"},"poData":{"type":"string"}},"required":[]}]]></uipath:inputSchema>
+          </uipath:context>
+          <uipath:input name="JobArguments" type="json" target="bodyField"><![CDATA[{"invoiceData":"=js:JSON.stringify(vars.dataextractionagent1.output.invoiceData)","poData":"=js:JSON.stringify(datafabric[bindings.bQBZpLFQA?folderPath=bindings.bap3JS209][\"qem:{\"selectedFields\":[\"CreateTime\",\"CreatedBy\",\"Id\",\"UpdateTime\",\"UpdatedBy\",\"freightAmount\",\"lineItems\",\"poDate\",\"poNumber\",\"subtotal\",\"taxAmount\",\"totalAmount\",\"vendorName\"],\"filterGroup\":{\"logicalOperator\":0,\"queryFilters\":[{\"fieldName\":\"poNumber\",\"operator\":\"=\",\"value\":\"=js:vars.script1.output.invoice.po_reference\"}]},\"limit\":100}\"])"}]]></uipath:input>
+          <uipath:output name="discrepancyInvestigationAgent1.output" type="object" source="=this" var="discrepancyInvestigationAgent1.output" />
+          <uipath:output name="discrepancyInvestigationAgent1.error" type="object" source="=Error" var="discrepancyInvestigationAgent1.error" />
+        </uipath:activity>
+      </bpmn:extensionElements>
+      <bpmn:incoming>edge_decision1-true-uipath.core.agent.cfe8f0ab-fc5e-4cff-92d5-0b4aa3d4aa10-1790455197558-input</bpmn:incoming>
+      <bpmn:incoming>xy-edge__quickForm1outcome-submit-discrepancyInvestigationAgent1input</bpmn:incoming>
+      <bpmn:outgoing>edge_discrepancyInvestigationAgent1-output-uipath.agent.autonomous-1790455335098-input</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="vendorResearchAgent1" name="Vendor Research agent">
+      <bpmn:extensionElements>
+        <uipath:activity version="v1">
+          <uipath:type value="Orchestrator.StartAgentJob" version="v2" />
+          <uipath:context>
+            <uipath:input name="name" type="string" value="=bindings.bM7UaVlDc" />
+            <uipath:input name="folderPath" type="string" value="=bindings.bdOgK6ObO" />
+            <uipath:input name="_label" type="string" value="Vendor Research agent" />
+            <uipath:inputSchema type="jsonSchema"><![CDATA[{"$schema":"http://json-schema.org/draft-07/schema#","type":"object","properties":{"invoiceVendorName":{"type":"string"},"poVendorName":{"type":"string"}},"required":[]}]]></uipath:inputSchema>
+          </uipath:context>
+          <uipath:input name="JobArguments" type="json" target="bodyField"><![CDATA[{"invoiceVendorName":"=js:vars.script1.output.vendor.vendor_name","poVendorName":"=js:(datafabric[bindings.bQBZpLFQA?folderPath=bindings.bap3JS209][\"qem:{\"selectedFields\":[\"CreateTime\",\"CreatedBy\",\"Id\",\"UpdateTime\",\"UpdatedBy\",\"freightAmount\",\"lineItems\",\"poDate\",\"poNumber\",\"subtotal\",\"taxAmount\",\"totalAmount\",\"vendorName\"],\"filterGroup\":{\"logicalOperator\":0,\"queryFilters\":[{\"fieldName\":\"poNumber\",\"operator\":\"=\",\"value\":\"=js:vars.script1.output.invoice.po_reference\"}]},\"limit\":100}\"])[\"vendorName\"]"}]]></uipath:input>
+          <uipath:output name="vendorResearchAgent1.output" type="object" source="=this" var="vendorResearchAgent1.output" />
+          <uipath:output name="vendorResearchAgent1.error" type="object" source="=Error" var="vendorResearchAgent1.error" />
+        </uipath:activity>
+      </bpmn:extensionElements>
+      <bpmn:incoming>edge_decision1-false-uipath.core.agent.1a2f3417-1b20-4914-a886-9bad8cb3850b-1790455207879-input</bpmn:incoming>
+      <bpmn:outgoing>edge_vendorResearchAgent1-output-uipath.human-in-the-loop.quick-form-1790455566902-input</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="autonomousAgent1" name="Email Draft agent">
+      <bpmn:extensionElements>
+        <uipath:activity version="v1">
+          <uipath:type value="Orchestrator.StartInlineAgentJob" version="v2" />
+          <uipath:context>
+            <uipath:input name="_label" type="string" value="Email Draft agent" />
+            <uipath:input name="name" type="string" value="Email Draft agent" />
+            <uipath:input name="entryPoint" type="string" value="content/90a8c0c7-cd8b-4a7c-86c9-4aa232151a07/agent.json" />
+            <uipath:inputSchema type="jsonSchema"><![CDATA[{"$schema":"http://json-schema.org/draft-07/schema#","type":"object","properties":{"discrepancyInvestigationAgent1__output":{"type":"object"}},"required":[]}]]></uipath:inputSchema>
+          </uipath:context>
+          <uipath:input name="JobArguments" type="json" target="bodyField"><![CDATA[{"discrepancyInvestigationAgent1__output":"=js:vars.discrepancyInvestigationAgent1.output"}]]></uipath:input>
+          <uipath:output name="autonomousAgent1.output" type="object" source="=this" var="autonomousAgent1.output" />
+          <uipath:output name="autonomousAgent1.error" type="object" source="=Error" var="autonomousAgent1.error" />
+        </uipath:activity>
+      </bpmn:extensionElements>
+      <bpmn:incoming>edge_discrepancyInvestigationAgent1-output-uipath.agent.autonomous-1790455335098-input</bpmn:incoming>
+      <bpmn:outgoing>edge_autonomousAgent1-success-uipath.connector.uipath-google-gmail.reply-to-email-1790455826911-input</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="quickForm1" name="Quick Form">
+      <bpmn:extensionElements>
+        <uipath:activity version="v1">
+          <uipath:type value="Actions.HITL" version="v2" />
+          <uipath:context>
+            <uipath:input name="hitlType" type="string" value="quick" />
+            <uipath:input name="__hitlFormSchema" type="json"><![CDATA[{"title":"Invoice Form","fields":[{"id":"invoiceVendor","type":"string","label":"Invoice Vendor","direction":"input","required":false,"binding":"=js:vars.script1.output.vendor.vendor_name"},{"id":"pOVendor","type":"string","label":"PO Vendor","direction":"input","required":false,"binding":"=js:(datafabric[bindings.bQBZpLFQA?folderPath=bindings.bap3JS209][\"qem:{\"selectedFields\":[\"CreateTime\",\"CreatedBy\",\"Id\",\"UpdateTime\",\"UpdatedBy\",\"freightAmount\",\"lineItems\",\"poDate\",\"poNumber\",\"subtotal\",\"taxAmount\",\"totalAmount\",\"vendorName\"],\"filterGroup\":{\"logicalOperator\":0,\"queryFilters\":[{\"fieldName\":\"poNumber\",\"operator\":\"=\",\"value\":\"=js:vars.script1.output.invoice.po_reference\"}]},\"limit\":100}\"])[\"results\"][0][\"vendorName\"]"},{"id":"findings","type":"string","label":"Findings","direction":"input","required":false,"binding":"=js:vars.vendorResearchAgent1.output.reasoning"}],"outcomes":[{"id":"submit","name":"Valid","type":"string","action":"Continue","isPrimary":true},{"id":"outcome-1780347884705","name":"Invalid","type":"string","action":"End","isPrimary":false}],"id":"9debfd79-863d-4134-ad87-21291aa3642f"}]]></uipath:input>
+            <uipath:input name="hitlSchemaId" type="string" value="9debfd79-863d-4134-ad87-21291aa3642f" />
+            <uipath:input name="__hitlInputBindings" type="json"><![CDATA[{"invoiceVendor":"=js:vars.script1.output.vendor.vendor_name","pOVendor":"=js:(datafabric[bindings.bQBZpLFQA?folderPath=bindings.bap3JS209][\"qem:{\"selectedFields\":[\"CreateTime\",\"CreatedBy\",\"Id\",\"UpdateTime\",\"UpdatedBy\",\"freightAmount\",\"lineItems\",\"poDate\",\"poNumber\",\"subtotal\",\"taxAmount\",\"totalAmount\",\"vendorName\"],\"filterGroup\":{\"logicalOperator\":0,\"queryFilters\":[{\"fieldName\":\"poNumber\",\"operator\":\"=\",\"value\":\"=js:vars.script1.output.invoice.po_reference\"}]},\"limit\":100}\"])[\"results\"][0][\"vendorName\"]","findings":"=js:vars.vendorResearchAgent1.output.reasoning"}]]></uipath:input>
+            <uipath:input name="taskTitle" type="string" value="Invoice Form" />
+            <uipath:input name="assignmentCriteria" type="string" value="SingleUser" />
+            <uipath:input name="recipient" type="json"><![CDATA[{"Value":"saahil.shaikh54@gmail.com","Type":2}]]></uipath:input>
+            <uipath:input name="customAssignees" type="string" value="" />
+            <uipath:input name="slackConnectionKey" type="string" value="Slack" />
+            <uipath:input name="teamsConnectionKey" type="string" value="Teams" />
+            <uipath:inputSchema type="jsonSchema"><![CDATA[{"$schema":"http://json-schema.org/draft-07/schema#","type":"object","properties":{"invoiceVendor":{"type":"string","title":"Invoice Vendor"},"pOVendor":{"type":"string","title":"PO Vendor"},"findings":{"type":"string","title":"Findings"}}}]]></uipath:inputSchema>
+          </uipath:context>
+          <uipath:input name="HitlTaskArguments" type="json" target="bodyField"><![CDATA[{"invoiceVendor":"=js:vars.script1.output.vendor.vendor_name","pOVendor":"=js:(datafabric[bindings.bQBZpLFQA?folderPath=bindings.bap3JS209][\"qem:{\"selectedFields\":[\"CreateTime\",\"CreatedBy\",\"Id\",\"UpdateTime\",\"UpdatedBy\",\"freightAmount\",\"lineItems\",\"poDate\",\"poNumber\",\"subtotal\",\"taxAmount\",\"totalAmount\",\"vendorName\"],\"filterGroup\":{\"logicalOperator\":0,\"queryFilters\":[{\"fieldName\":\"poNumber\",\"operator\":\"=\",\"value\":\"=js:vars.script1.output.invoice.po_reference\"}]},\"limit\":100}\"])[\"results\"][0][\"vendorName\"]","findings":"=js:vars.vendorResearchAgent1.output.reasoning"}]]></uipath:input>
+          <uipath:output name="quickForm1.output" type="object" source="=result" var="quickForm1.output" />
+          <uipath:output name="quickForm1.status" type="string" source="=result.Action" var="quickForm1.status" options="[{&#34;value&#34;:&#34;Valid&#34;,&#34;label&#34;:&#34;Valid&#34;},{&#34;value&#34;:&#34;Invalid&#34;,&#34;label&#34;:&#34;Invalid&#34;}]" />
+        </uipath:activity>
+      </bpmn:extensionElements>
+      <bpmn:incoming>edge_vendorResearchAgent1-output-uipath.human-in-the-loop.quick-form-1790455566902-input</bpmn:incoming>
+      <bpmn:outgoing>xy-edge__quickForm1outcome-submit-discrepancyInvestigationAgent1input</bpmn:outgoing>
+      <bpmn:outgoing>edge_quickForm1-outcome-outcome-1780347884705-core.control.end-1790455735319-input</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="end1" name="End">
+      <bpmn:incoming>edge_quickForm1-outcome-outcome-1780347884705-core.control.end-1790455735319-input</bpmn:incoming>
+      <bpmn:incoming>xy-edge__replyToEmail1output-end1input</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sendTask id="replyToEmail1" name="Reply to Email">
+      <bpmn:extensionElements>
+        <uipath:activity version="v1">
+          <uipath:type value="Intsvc.ActivityExecution" version="v1" />
+          <uipath:context>
+            <uipath:input name="connectorKey" type="string" value="uipath-google-gmail" />
+            <uipath:input name="connection" type="string" value="=bindings.bFfrqE4UL" />
+            <uipath:input name="resourceKey" type="string" value="b8e2cd0c-c2e2-4387-90be-a06806fccbef" />
+            <uipath:input name="folderKey" type="string" value="=bindings.b77CeQIo1" />
+            <uipath:input name="method" type="string" value="POST" />
+            <uipath:input name="path" type="string" value="/EmailReply" />
+            <uipath:input name="objectName" type="string" value="EmailReply" />
+            <uipath:input name="metadata" type="json"><![CDATA[{"activityPropertyConfiguration":{"multipartParameters":[{"name":"file","dataType":"file"},{"name":"body","dataType":"string","value":"=js:([ \"<p>\", vars.autonomousAgent1.output.body, \"</p>\" ].join(''))"}],"objectName":"EmailReply","configuration":"=jsonString:{\"essentialConfiguration\":{\"connectorVersion\":\"1.24.9\",\"executionType\":null,\"scriptRef\":null,\"customFieldsRequestDetails\":null,\"instanceParameters\":{\"connectorKey\":\"uipath-google-gmail\",\"objectName\":\"EmailReply\",\"httpMethod\":\"POST\",\"activityType\":\"Curated\",\"version\":\"1.0.0\",\"supportsStreaming\":false,\"subType\":\"standard\"},\"objectName\":\"EmailReply\",\"operation\":\"create\",\"packageVersion\":\"1.0.0\",\"httpMethod\":\"POST\",\"path\":\"/EmailReply\",\"unifiedTypesCompatible\":true,\"savedJitInputFieldId\":\"in_EmailReply\"},\"optionalConfiguration\":{\"_textBlocks\":[],\"objectActions\":[],\"connectorName\":\"Gmail\",\"agentIdentity\":null,\"maxPageSize\":500,\"jobArguments\":null,\"isAutopilotInvalidConfig\":false,\"additionalHeaders\":null,\"cachedLookupValues\":[],\"cachedBrowserItems\":[],\"cachedPropertyMappings\":[[\"id\",{\"mappingType\":\"Expression\"}]],\"primaryKeys\":[\"id\"],\"objectDisplayName\":\"Email Reply\",\"baseObject\":null,\"eventMode\":null,\"eventOperation\":null,\"language\":\"en-US\",\"hasBreakingChanges\":false,\"fieldsContainer\":{\"outputTypeDefinition\":\"{\\\"id\\\":string;\\\"labelIds\\\":string[];\\\"threadId\\\":string}\",\"outputJsonSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\",\"type\":\"object\",\"properties\":{\"threadId\":{\"title\":\"Email thread identifier\",\"type\":\"string\",\"description\":\"Unique identifier for the email conversation thread.\"},\"labelIds[*]\":{\"title\":\"Label identifiers\",\"type\":\"array\",\"items\":{\"type\":\"string\"},\"description\":\"Unique identifiers for the labels associated with the email.\"},\"id\":{\"title\":\"Email identifier\",\"type\":\"string\",\"description\":\"A unique identifier for the email message.\"}},\"definitions\":{}},\"hasFileOutput\":false,\"populateOutputFields\":true,\"inputFields\":[{\"typeScriptDefinition\":null,\"useUrlInput\":false,\"id\":\"id\",\"name\":\"id\",\"displayName\":\"The email to reply to\",\"description\":\"The ID of email to reply to. This can be retrieved from a trigger activity or get email activities.\",\"type\":\"string\",\"sortOrder\":1,\"primaryKey\":false,\"design\":{\"loadByDefault\":false,\"isMultiSelect\":false,\"enableUserOverride\":false,\"isHidden\":false,\"position\":\"primary\",\"validation\":false},\"fieldActions\":null,\"searchable\":false,\"searchableOperators\":null,\"searchableNames\":null,\"required\":true,\"request\":true,\"response\":false,\"responseCurated\":false,\"fieldLocation\":\"query\",\"onCanvas\":null,\"isJitField\":false,\"isFieldActionParent\":false,\"isMainResponseField\":false,\"isMethodParameter\":true,\"isBackgroundField\":false,\"filterTree\":null,\"filterNeedsRefresh\":null,\"arrayInputPaths\":null,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String\",\"isValueType\":true},\"forceExpressionEditor\":false,\"requiredGroups\":null,\"disableExpressions\":false,\"backingField\":null,\"searchableDisplayName\":null,\"selectedResourceId\":null},{\"typeScriptDefinition\":null,\"useUrlInput\":false,\"id\":\"body\",\"name\":\"body\",\"displayName\":\"Body\",\"description\":\"The body of the email\",\"type\":\"string\",\"sortOrder\":2,\"primaryKey\":false,\"design\":{\"component\":\"RichTextEditorHTML\",\"loadByDefault\":true,\"isMultiSelect\":false,\"enableUserOverride\":false,\"isHidden\":false,\"position\":\"primary\",\"validation\":false},\"fieldActions\":null,\"searchable\":false,\"searchableJoins\":null,\"required\":false,\"request\":true,\"response\":false,\"responseCurated\":false,\"fieldLocation\":\"body\",\"onCanvas\":true,\"isJitField\":false,\"isFieldActionParent\":false,\"isMainResponseField\":false,\"isMethodParameter\":false,\"isBackgroundField\":false,\"filterTree\":null,\"filterNeedsRefresh\":null,\"arrayInputPaths\":null,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String\",\"isValueType\":true},\"forceExpressionEditor\":false,\"requiredGroups\":null,\"disableExpressions\":false,\"backingField\":null,\"searchableDisplayName\":null,\"selectedResourceId\":null,\"sampleValue\":\"\"},{\"typeScriptDefinition\":null,\"useUrlInput\":false,\"id\":\"replyToAll\",\"name\":\"replyToAll\",\"displayName\":\"Reply to all\",\"description\":\"Specifies whether to send the reply to all the recipients of the initial email\",\"type\":\"boolean\",\"sortOrder\":3,\"defaultValue\":false,\"primaryKey\":false,\"design\":{\"loadByDefault\":false,\"isMultiSelect\":false,\"enableUserOverride\":false,\"isHidden\":false,\"position\":\"primary\",\"validation\":false},\"fieldActions\":null,\"searchable\":false,\"searchableOperators\":null,\"searchableNames\":null,\"required\":false,\"request\":true,\"response\":false,\"responseCurated\":false,\"fieldLocation\":\"query\",\"onCanvas\":true,\"isJitField\":false,\"isFieldActionParent\":false,\"isMainResponseField\":false,\"isMethodParameter\":true,\"isBackgroundField\":false,\"filterTree\":null,\"filterNeedsRefresh\":null,\"arrayInputPaths\":null,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"Boolean\",\"assemblyQualifiedName\":\"Boolean\",\"isValueType\":true},\"forceExpressionEditor\":false,\"requiredGroups\":null,\"disableExpressions\":false,\"backingField\":null,\"searchableDisplayName\":null,\"selectedResourceId\":null},{\"typeScriptDefinition\":null,\"useUrlInput\":false,\"id\":\"saveAsDraft\",\"name\":\"saveAsDraft\",\"displayName\":\"Save as draft\",\"description\":\"Specifies whether the email should be saved as draft instead of being sent\",\"type\":\"boolean\",\"sortOrder\":4,\"defaultValue\":false,\"primaryKey\":false,\"design\":{\"loadByDefault\":false,\"isMultiSelect\":false,\"enableUserOverride\":false,\"isHidden\":false,\"position\":\"primary\",\"validation\":false},\"fieldActions\":null,\"searchable\":false,\"searchableOperators\":null,\"searchableNames\":null,\"required\":false,\"request\":true,\"response\":false,\"responseCurated\":false,\"fieldLocation\":\"query\",\"onCanvas\":true,\"isJitField\":false,\"isFieldActionParent\":false,\"isMainResponseField\":false,\"isMethodParameter\":true,\"isBackgroundField\":false,\"filterTree\":null,\"filterNeedsRefresh\":null,\"arrayInputPaths\":null,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"Boolean\",\"assemblyQualifiedName\":\"Boolean\",\"isValueType\":true},\"forceExpressionEditor\":false,\"requiredGroups\":null,\"disableExpressions\":false,\"backingField\":null,\"searchableDisplayName\":null,\"selectedResourceId\":null},{\"typeScriptDefinition\":\"{ \\\"ID\\\": string; \\\"FullName\\\"?: string; \\\"MimeType\\\"?: string; \\\"Metadata\\\"?: Record<string, unknown>; }\",\"useUrlInput\":false,\"id\":\"_file\",\"name\":\"file\",\"displayName\":\"Attachment\",\"description\":\"The attachment to be sent with the reply email\",\"type\":\"file\",\"sortOrder\":5,\"primaryKey\":false,\"design\":{\"loadByDefault\":false,\"isMultiSelect\":false,\"enableUserOverride\":false,\"isHidden\":false,\"position\":\"secondary\",\"validation\":false},\"fieldActions\":null,\"searchable\":false,\"searchableOperators\":null,\"searchableNames\":null,\"required\":false,\"request\":true,\"response\":false,\"responseCurated\":false,\"fieldLocation\":\"multipart\",\"onCanvas\":true,\"isJitField\":false,\"isFieldActionParent\":false,\"isMainResponseField\":false,\"isMethodParameter\":true,\"isBackgroundField\":false,\"filterTree\":null,\"filterNeedsRefresh\":null,\"arrayInputPaths\":null,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"IResource\",\"assemblyQualifiedName\":\"IResource\",\"isValueType\":false},\"forceExpressionEditor\":false,\"requiredGroups\":null,\"disableExpressions\":false,\"backingField\":null,\"searchableDisplayName\":null,\"selectedResourceId\":null},{\"typeScriptDefinition\":null,\"useUrlInput\":false,\"id\":\"subject\",\"name\":\"subject\",\"displayName\":\"New subject\",\"description\":\"The new subject of the email. If left blank, the original subject is used.\",\"type\":\"string\",\"sortOrder\":6,\"primaryKey\":false,\"design\":{\"loadByDefault\":true,\"isMultiSelect\":false,\"enableUserOverride\":false,\"isHidden\":false,\"position\":\"secondary\",\"validation\":false},\"fieldActions\":null,\"searchable\":false,\"searchableJoins\":null,\"required\":false,\"request\":true,\"response\":false,\"responseCurated\":false,\"fieldLocation\":\"body\",\"onCanvas\":true,\"isJitField\":false,\"isFieldActionParent\":false,\"isMainResponseField\":false,\"isMethodParameter\":false,\"isBackgroundField\":false,\"filterTree\":null,\"filterNeedsRefresh\":null,\"arrayInputPaths\":null,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String\",\"isValueType\":true},\"forceExpressionEditor\":false,\"requiredGroups\":null,\"disableExpressions\":false,\"backingField\":null,\"searchableDisplayName\":null,\"selectedResourceId\":null,\"sampleValue\":\"\"},{\"typeScriptDefinition\":null,\"useUrlInput\":false,\"id\":\"importance\",\"name\":\"importance\",\"displayName\":\"Importance\",\"description\":\"The importance of the mail\",\"type\":\"string\",\"sortOrder\":7,\"defaultValue\":\"normal\",\"primaryKey\":false,\"enum\":[{\"name\":\"Normal\",\"value\":\"normal\"},{\"name\":\"High\",\"value\":\"high\"},{\"name\":\"Low\",\"value\":\"low\"}],\"design\":{\"loadByDefault\":true,\"isMultiSelect\":false,\"enableUserOverride\":false,\"isHidden\":false,\"position\":\"secondary\",\"validation\":false},\"fieldActions\":null,\"searchable\":false,\"searchableJoins\":null,\"required\":false,\"request\":true,\"response\":false,\"responseCurated\":false,\"fieldLocation\":\"body\",\"onCanvas\":true,\"isJitField\":false,\"isFieldActionParent\":false,\"isMainResponseField\":false,\"isMethodParameter\":false,\"isBackgroundField\":false,\"filterTree\":null,\"filterNeedsRefresh\":null,\"arrayInputPaths\":null,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String\",\"isValueType\":true},\"forceExpressionEditor\":false,\"requiredGroups\":null,\"disableExpressions\":false,\"backingField\":null,\"searchableDisplayName\":null,\"selectedResourceId\":null,\"sampleValue\":\"string\"},{\"typeScriptDefinition\":null,\"useUrlInput\":false,\"id\":\"to\",\"name\":\"to\",\"displayName\":\"To\",\"description\":\"Additional primary recipients of the email, separated by comma (,)\",\"type\":\"string\",\"sortOrder\":8,\"primaryKey\":false,\"design\":{\"loadByDefault\":true,\"isMultiSelect\":false,\"enableUserOverride\":false,\"isHidden\":false,\"position\":\"secondary\",\"validation\":false},\"fieldActions\":null,\"searchable\":false,\"searchableJoins\":null,\"required\":false,\"request\":true,\"response\":false,\"responseCurated\":false,\"fieldLocation\":\"body\",\"onCanvas\":true,\"isJitField\":false,\"isFieldActionParent\":false,\"isMainResponseField\":false,\"isMethodParameter\":false,\"isBackgroundField\":false,\"filterTree\":null,\"filterNeedsRefresh\":null,\"arrayInputPaths\":null,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String\",\"isValueType\":true},\"forceExpressionEditor\":false,\"requiredGroups\":null,\"disableExpressions\":false,\"backingField\":null,\"searchableDisplayName\":null,\"selectedResourceId\":null,\"sampleValue\":\"\"},{\"typeScriptDefinition\":null,\"useUrlInput\":false,\"id\":\"cc\",\"name\":\"cc\",\"displayName\":\"CC\",\"description\":\"Additional secondary recipients of the email, separated by comma (,)\",\"type\":\"string\",\"sortOrder\":9,\"primaryKey\":false,\"design\":{\"loadByDefault\":true,\"isMultiSelect\":false,\"enableUserOverride\":false,\"isHidden\":false,\"position\":\"secondary\",\"validation\":false},\"fieldActions\":null,\"searchable\":false,\"searchableJoins\":null,\"required\":false,\"request\":true,\"response\":false,\"responseCurated\":false,\"fieldLocation\":\"body\",\"onCanvas\":true,\"isJitField\":false,\"isFieldActionParent\":false,\"isMainResponseField\":false,\"isMethodParameter\":false,\"isBackgroundField\":false,\"filterTree\":null,\"filterNeedsRefresh\":null,\"arrayInputPaths\":null,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String\",\"isValueType\":true},\"forceExpressionEditor\":false,\"requiredGroups\":null,\"disableExpressions\":false,\"backingField\":null,\"searchableDisplayName\":null,\"selectedResourceId\":null,\"sampleValue\":\"\"},{\"typeScriptDefinition\":null,\"useUrlInput\":false,\"id\":\"bcc\",\"name\":\"bcc\",\"displayName\":\"BCC\",\"description\":\"Additional hidden recipients of the email, separated by comma (,)\",\"type\":\"string\",\"sortOrder\":10,\"primaryKey\":false,\"design\":{\"loadByDefault\":true,\"isMultiSelect\":false,\"enableUserOverride\":false,\"isHidden\":false,\"position\":\"secondary\",\"validation\":false},\"fieldActions\":null,\"searchable\":false,\"searchableJoins\":null,\"required\":false,\"request\":true,\"response\":false,\"responseCurated\":false,\"fieldLocation\":\"body\",\"onCanvas\":true,\"isJitField\":false,\"isFieldActionParent\":false,\"isMainResponseField\":false,\"isMethodParameter\":false,\"isBackgroundField\":false,\"filterTree\":null,\"filterNeedsRefresh\":null,\"arrayInputPaths\":null,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String\",\"isValueType\":true},\"forceExpressionEditor\":false,\"requiredGroups\":null,\"disableExpressions\":false,\"backingField\":null,\"searchableDisplayName\":null,\"selectedResourceId\":null,\"sampleValue\":\"\"},{\"typeScriptDefinition\":null,\"useUrlInput\":false,\"id\":\"body\",\"name\":\"body\",\"displayName\":\"Body\",\"description\":\"Request body\",\"type\":\"string\",\"sortOrder\":13,\"primaryKey\":false,\"design\":{\"displayName\":null,\"description\":null,\"displayPattern\":null,\"isMultiSelect\":null,\"loadByDefault\":null,\"enableUserOverride\":null,\"isHidden\":true,\"fieldActions\":null,\"position\":null,\"component\":null,\"requiredGroups\":null,\"textBlocks\":null,\"dictionaryWidget\":null,\"selection\":null,\"solutionResourceKind\":null,\"solutionResourceSubTypes\":null,\"exposeAsSubBinding\":null,\"enableURLInput\":null},\"fieldActions\":null,\"searchable\":false,\"searchableOperators\":null,\"searchableNames\":null,\"required\":false,\"request\":true,\"response\":false,\"responseCurated\":false,\"fieldLocation\":\"multipart\",\"onCanvas\":true,\"isJitField\":false,\"isFieldActionParent\":false,\"isMainResponseField\":false,\"isMethodParameter\":true,\"isBackgroundField\":false,\"filterTree\":null,\"filterNeedsRefresh\":null,\"arrayInputPaths\":null,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"String\",\"assemblyQualifiedName\":\"String\",\"isValueType\":true},\"forceExpressionEditor\":false,\"requiredGroups\":null,\"disableExpressions\":false,\"backingField\":null,\"searchableDisplayName\":null,\"selectedResourceId\":null}],\"outputFields\":[{\"typeScriptDefinition\":null,\"useUrlInput\":false,\"id\":\"EmailReply\",\"name\":\"EmailReply\",\"displayName\":\"Email Reply\",\"description\":\"\",\"type\":\"GeneratedEmailReply\",\"sortOrder\":null,\"format\":null,\"mask\":null,\"defaultValue\":null,\"primaryKey\":false,\"lookup\":null,\"enum\":null,\"design\":null,\"fieldActions\":null,\"searchable\":false,\"searchableOperators\":null,\"searchableNames\":null,\"searchableJoins\":null,\"required\":false,\"request\":false,\"response\":true,\"responseCurated\":false,\"fieldLocation\":\"output\",\"onCanvas\":null,\"isJitField\":true,\"isFieldActionParent\":false,\"isMainResponseField\":true,\"isMethodParameter\":false,\"isBackgroundField\":false,\"filterTree\":null,\"filterNeedsRefresh\":null,\"arrayInputPaths\":null,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"Object\",\"assemblyQualifiedName\":\"Object\",\"isValueType\":false},\"forceExpressionEditor\":false,\"requiredGroups\":null,\"disableExpressions\":false,\"backingField\":null,\"searchableDisplayName\":null,\"selectedResourceId\":null}],\"jitTypeNeedsRefresh\":false,\"jitInputField\":{\"typeScriptDefinition\":\"{\\\"bcc\\\":string;\\\"body\\\":string;\\\"cc\\\":string;\\\"importance\\\":string;\\\"subject\\\":string;\\\"to\\\":string}\",\"useUrlInput\":false,\"id\":\"in_EmailReply\",\"name\":\"EmailReply\",\"displayName\":\"Email Reply\",\"description\":\"'Email Reply' input object\",\"type\":\"GeneratedEmailReply\",\"sortOrder\":null,\"format\":null,\"mask\":null,\"defaultValue\":\"{\\n  \\\"bcc\\\": null,\\n  \\\"body\\\": null,\\n  \\\"cc\\\": null,\\n  \\\"importance\\\": null,\\n  \\\"subject\\\": null,\\n  \\\"to\\\": null\\n}\",\"primaryKey\":false,\"lookup\":null,\"enum\":null,\"design\":null,\"fieldActions\":null,\"searchable\":false,\"searchableOperators\":null,\"searchableNames\":null,\"searchableJoins\":null,\"required\":true,\"request\":false,\"response\":false,\"responseCurated\":false,\"fieldLocation\":\"jitObjectInput\",\"onCanvas\":null,\"isJitField\":true,\"isFieldActionParent\":false,\"isMainResponseField\":false,\"isMethodParameter\":false,\"isBackgroundField\":false,\"filterTree\":null,\"filterNeedsRefresh\":null,\"arrayInputPaths\":null,\"clrType\":{\"_elementType\":null,\"_isNullable\":false,\"isArray\":false,\"genericTypeArguments\":[],\"fullName\":null,\"name\":\"Object\",\"assemblyQualifiedName\":\"Object\",\"isValueType\":false},\"forceExpressionEditor\":false,\"requiredGroups\":null,\"disableExpressions\":false,\"backingField\":null,\"searchableDisplayName\":null,\"selectedResourceId\":null},\"inputMode\":null,\"searchableFields\":[],\"hasUnifiedTypes\":true,\"jitTypeHash\":null}}}","uiPathActivityTypeId":"d4944117-1534-38f6-8d8f-ef435d63d9ea","errorState":{"issues":[]}},"inputMetadata":{"type":"multipart","multipart":{"bodyFieldName":"body"}},"telemetryData":{"connectorKey":"uipath-google-gmail","connectorName":"Gmail","operationType":"create","objectName":"EmailReply","objectDisplayName":"Email Reply","primaryKeyName":"id"}}]]></uipath:input>
+          </uipath:context>
+          <uipath:input name="pathParameters" type="json" target="pathParameters" />
+          <uipath:input name="queryParameters" type="json" target="queryParameters"><![CDATA[{"id":"=js:(vars.emailReceived2.output.ID)","replyToAll":false,"saveAsDraft":false}]]></uipath:input>
+          <uipath:input name="file" type="file" target="file" />
+          <uipath:input name="body" type="json" target="body"><![CDATA[{"body":"=js:([ \"<p>\", vars.autonomousAgent1.output.body, \"</p>\" ].join(''))","importance":"normal"}]]></uipath:input>
+          <uipath:output name="replyToEmail1.output" type="jsonSchema" source="=response" var="replyToEmail1.output" />
+        </uipath:activity>
+      </bpmn:extensionElements>
+      <bpmn:incoming>edge_autonomousAgent1-success-uipath.connector.uipath-google-gmail.reply-to-email-1790455826911-input</bpmn:incoming>
+      <bpmn:outgoing>xy-edge__replyToEmail1output-end1input</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:sequenceFlow id="edge_emailReceived2-output-uipath.core.agent.690a4503-8b3d-4ea9-8283-57e1fc301f2a-1790453529899-input" sourceRef="emailReceived2" targetRef="dataextractionagent1" />
+    <bpmn:sequenceFlow id="edge_dataextractionagent1-output-core.action.script-1790453672618-input" sourceRef="dataextractionagent1" targetRef="script1" />
+    <bpmn:sequenceFlow id="edge_script1-success-core.datafabric.read-1790453968676-input" sourceRef="script1" targetRef="queryEntityRecords1" />
+    <bpmn:sequenceFlow id="edge_queryEntityRecords1-output-core.logic.decision-1790454254842-input" sourceRef="queryEntityRecords1" targetRef="decision1" />
+    <bpmn:sequenceFlow id="edge_decision1-true-uipath.core.agent.cfe8f0ab-fc5e-4cff-92d5-0b4aa3d4aa10-1790455197558-input" name="True" sourceRef="decision1" targetRef="discrepancyInvestigationAgent1">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=js:vars.script1.output.vendor.vendor_name === (datafabric[bindings.bQBZpLFQA?folderPath=bindings.bap3JS209]["qem:{"selectedFields":["CreateTime","CreatedBy","Id","UpdateTime","UpdatedBy","freightAmount","lineItems","poDate","poNumber","subtotal","taxAmount","totalAmount","vendorName"],"filterGroup":{"logicalOperator":0,"queryFilters":[{"fieldName":"poNumber","operator":"=","value":"=js:vars.script1.output.invoice.po_reference"}]},"limit":100}"])["vendorName"]</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="edge_decision1-false-uipath.core.agent.1a2f3417-1b20-4914-a886-9bad8cb3850b-1790455207879-input" name="False" sourceRef="decision1" targetRef="vendorResearchAgent1">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=js:!(vars.script1.output.vendor.vendor_name === (datafabric[bindings.bQBZpLFQA?folderPath=bindings.bap3JS209]["qem:{"selectedFields":["CreateTime","CreatedBy","Id","UpdateTime","UpdatedBy","freightAmount","lineItems","poDate","poNumber","subtotal","taxAmount","totalAmount","vendorName"],"filterGroup":{"logicalOperator":0,"queryFilters":[{"fieldName":"poNumber","operator":"=","value":"=js:vars.script1.output.invoice.po_reference"}]},"limit":100}"])["vendorName"]
+)</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="edge_discrepancyInvestigationAgent1-output-uipath.agent.autonomous-1790455335098-input" sourceRef="discrepancyInvestigationAgent1" targetRef="autonomousAgent1" />
+    <bpmn:sequenceFlow id="edge_vendorResearchAgent1-output-uipath.human-in-the-loop.quick-form-1790455566902-input" sourceRef="vendorResearchAgent1" targetRef="quickForm1" />
+    <bpmn:sequenceFlow id="xy-edge__quickForm1outcome-submit-discrepancyInvestigationAgent1input" name="Valid" sourceRef="quickForm1" targetRef="discrepancyInvestigationAgent1">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=js:vars.quickForm1.output.Action === "Valid"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="edge_quickForm1-outcome-outcome-1780347884705-core.control.end-1790455735319-input" name="Invalid" sourceRef="quickForm1" targetRef="end1">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=js:vars.quickForm1.output.Action === "Invalid"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="edge_autonomousAgent1-success-uipath.connector.uipath-google-gmail.reply-to-email-1790455826911-input" sourceRef="autonomousAgent1" targetRef="replyToEmail1" />
+    <bpmn:sequenceFlow id="xy-edge__replyToEmail1output-end1input" sourceRef="replyToEmail1" targetRef="end1" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Diagram_1">
+    <bpmndi:BPMNPlane id="Plane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNShape id="emailReceived2_di" bpmnElement="emailReceived2">
+        <dc:Bounds x="57" y="52" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="dataextractionagent1_di" bpmnElement="dataextractionagent1">
+        <dc:Bounds x="175" y="30" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="script1_di" bpmnElement="script1">
+        <dc:Bounds x="325" y="30" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="queryEntityRecords1_di" bpmnElement="queryEntityRecords1">
+        <dc:Bounds x="475" y="30" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="decision1_di" bpmnElement="decision1">
+        <dc:Bounds x="650" y="45" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="discrepancyInvestigationAgent1_di" bpmnElement="discrepancyInvestigationAgent1">
+        <dc:Bounds x="775" y="30" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="autonomousAgent1_di" bpmnElement="autonomousAgent1">
+        <dc:Bounds x="925" y="30" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="replyToEmail1_di" bpmnElement="replyToEmail1">
+        <dc:Bounds x="1075" y="30" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="end1_di" bpmnElement="end1">
+        <dc:Bounds x="1257" y="52" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="vendorResearchAgent1_di" bpmnElement="vendorResearchAgent1">
+        <dc:Bounds x="775" y="170" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="quickForm1_di" bpmnElement="quickForm1">
+        <dc:Bounds x="925" y="170" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge_emailReceived2-output-uipath.core.agent.690a4503-8b3d-4ea9-8283-57e1fc301f2a-1790453529899-input_di" bpmnElement="edge_emailReceived2-output-uipath.core.agent.690a4503-8b3d-4ea9-8283-57e1fc301f2a-1790453529899-input">
+        <di:waypoint x="93" y="70" />
+        <di:waypoint x="175" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_dataextractionagent1-output-core.action.script-1790453672618-input_di" bpmnElement="edge_dataextractionagent1-output-core.action.script-1790453672618-input">
+        <di:waypoint x="275" y="70" />
+        <di:waypoint x="325" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_script1-success-core.datafabric.read-1790453968676-input_di" bpmnElement="edge_script1-success-core.datafabric.read-1790453968676-input">
+        <di:waypoint x="425" y="70" />
+        <di:waypoint x="475" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_queryEntityRecords1-output-core.logic.decision-1790454254842-input_di" bpmnElement="edge_queryEntityRecords1-output-core.logic.decision-1790454254842-input">
+        <di:waypoint x="575" y="70" />
+        <di:waypoint x="650" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_decision1-true-uipath.core.agent.cfe8f0ab-fc5e-4cff-92d5-0b4aa3d4aa10-1790455197558-input_di" bpmnElement="edge_decision1-true-uipath.core.agent.cfe8f0ab-fc5e-4cff-92d5-0b4aa3d4aa10-1790455197558-input">
+        <di:waypoint x="700" y="70" />
+        <di:waypoint x="775" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_decision1-false-uipath.core.agent.1a2f3417-1b20-4914-a886-9bad8cb3850b-1790455207879-input_di" bpmnElement="edge_decision1-false-uipath.core.agent.1a2f3417-1b20-4914-a886-9bad8cb3850b-1790455207879-input">
+        <di:waypoint x="675" y="95" />
+        <di:waypoint x="675" y="210" />
+        <di:waypoint x="775" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_discrepancyInvestigationAgent1-output-uipath.agent.autonomous-1790455335098-input_di" bpmnElement="edge_discrepancyInvestigationAgent1-output-uipath.agent.autonomous-1790455335098-input">
+        <di:waypoint x="875" y="70" />
+        <di:waypoint x="925" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_autonomousAgent1-success-uipath.connector.uipath-google-gmail.reply-to-email-1790455826911-input_di" bpmnElement="edge_autonomousAgent1-success-uipath.connector.uipath-google-gmail.reply-to-email-1790455826911-input">
+        <di:waypoint x="1025" y="70" />
+        <di:waypoint x="1075" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="xy-edge__replyToEmail1output-end1input_di" bpmnElement="xy-edge__replyToEmail1output-end1input">
+        <di:waypoint x="1175" y="70" />
+        <di:waypoint x="1257" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_vendorResearchAgent1-output-uipath.human-in-the-loop.quick-form-1790455566902-input_di" bpmnElement="edge_vendorResearchAgent1-output-uipath.human-in-the-loop.quick-form-1790455566902-input">
+        <di:waypoint x="875" y="210" />
+        <di:waypoint x="925" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="xy-edge__quickForm1outcome-submit-discrepancyInvestigationAgent1input_di" bpmnElement="xy-edge__quickForm1outcome-submit-discrepancyInvestigationAgent1input">
+        <di:waypoint x="975" y="250" />
+        <di:waypoint x="975" y="280" />
+        <di:waypoint x="825" y="280" />
+        <di:waypoint x="825" y="110" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_quickForm1-outcome-outcome-1780347884705-core.control.end-1790455735319-input_di" bpmnElement="edge_quickForm1-outcome-outcome-1780347884705-core.control.end-1790455735319-input">
+        <di:waypoint x="1025" y="210" />
+        <di:waypoint x="1275" y="210" />
+        <di:waypoint x="1275" y="88" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

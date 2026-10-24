@@ -1,0 +1,27 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Vendor_Contracts",
+    "kind": "bucket",
+    "type": "orchestratorBucket",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "isOverridable": true,
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "files": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "type": "Orchestrator",
+      "name": "Vendor_Contracts",
+      "description": "Vendot contracts PDf\u0027s",
+      "options": null,
+      "tags": []
+    },
+    "locks": [],
+    "key": "3f7db26c-0b77-49e7-b945-8f36fcf84ab0"
+  }
+}

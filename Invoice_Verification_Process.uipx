@@ -1,0 +1,28 @@
+{
+  "DocVersion": "1.0.0",
+  "StudioMinVersion": "2025.04.0",
+  "SolutionId": "201c7173-e14f-4a08-e2df-08df19d6041f",
+  "Projects": [
+    {
+      "Type": "Agent",
+      "ProjectRelativePath": "Vendor Research agent/project.uiproj",
+      "Id": "2d0117c3-4143-4660-ad26-23bed3092ed9"
+    },
+    {
+      "Type": "Agent",
+      "ProjectRelativePath": "DataExtractionAgent/project.uiproj",
+      "Id": "3ce12c8d-f44e-4887-aebe-f029374bb96e"
+    },
+    {
+      "Type": "Flow",
+      "ProjectRelativePath": "Maestro Flow/project.uiproj",
+      "Id": "567d85eb-9b83-4c25-897e-2ebef1d77ab6"
+    },
+    {
+      "Type": "Agent",
+      "ProjectRelativePath": "Discrepancy Investigation agent/project.uiproj",
+      "Id": "e9c12a69-c6ae-420b-b221-d18ed3f842fc"
+    }
+  ],
+  "AutomationHubIdeaUrl": null
+}

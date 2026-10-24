@@ -1,0 +1,21 @@
+{
+  "SolutionId": "201c7173-e14f-4a08-e2df-08df19d6041f",
+  "Projects": [
+    {
+      "ProjectId": "05a94fdd-ac3d-45cb-91bf-37d89f661525",
+      "ProjectRelativePath": "Vendor Research agent/project.uiproj"
+    },
+    {
+      "ProjectId": "8096c1b4-e281-4d59-9ed0-76322a264c7a",
+      "ProjectRelativePath": "DataExtractionAgent/project.uiproj"
+    },
+    {
+      "ProjectId": "3b91fa8f-6374-472b-bd29-e381fa877239",
+      "ProjectRelativePath": "Maestro Flow/project.uiproj"
+    },
+    {
+      "ProjectId": "c971b068-c36d-4189-a8fe-ea1e440556b5",
+      "ProjectRelativePath": "Discrepancy Investigation agent/project.uiproj"
+    }
+  ]
+}

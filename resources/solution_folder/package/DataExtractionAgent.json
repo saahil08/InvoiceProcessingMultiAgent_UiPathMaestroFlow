@@ -1,0 +1,26 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "DataExtractionAgent",
+    "kind": "package",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "3ce12c8d-f44e-4887-aebe-f029374bb96e",
+    "isOverridable": true,
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "files": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "fileName": null,
+      "fileReference": null,
+      "name": "DataExtractionAgent",
+      "description": null
+    },
+    "locks": [],
+    "key": "1cafd52d-9d7e-401f-81c2-854e6f9e11ae"
+  }
+}

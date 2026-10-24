@@ -1,0 +1,29 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "saahil.shaikh54@gmail.com_1",
+    "kind": "connection",
+    "type": "uipath-uipath-dataservice",
+    "apiVersion": "integrationservice.uipath.com/v1",
+    "isOverridable": true,
+    "dependencies": [],
+    "runtimeDependencies": [],
+    "files": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "connectorName": "UiPath Data Fabric",
+      "name": "saahil.shaikh54@gmail.com_1",
+      "description": null,
+      "authenticationType": "AuthenticateAfterDeployment",
+      "connectorVersion": "1.75.1",
+      "connectorKey": "uipath-uipath-dataservice",
+      "pollingInterval": 5
+    },
+    "locks": [],
+    "key": "72e53256-5ac0-4127-b5f2-83e2ea095de0"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "docVersion": "1.0.0",
+  "resource": {
+    "name": "Vendor Research agent",
+    "kind": "process",
+    "type": "agent",
+    "apiVersion": "orchestrator.uipath.com/v1",
+    "projectKey": "2d0117c3-4143-4660-ad26-23bed3092ed9",
+    "isOverridable": true,
+    "dependencies": [
+      {
+        "name": "Vendor Research agent",
+        "kind": "package"
+      }
+    ],
+    "runtimeDependencies": [],
+    "files": [],
+    "folders": [
+      {
+        "fullyQualifiedName": "solution_folder"
+      }
+    ],
+    "spec": {
+      "targetRuntime": null,
+      "referencedAssets": null,
+      "entryPointUniqueId": null,
+      "inputArgumentsSchema": null,
+      "outputArgumentsSchema": null,
+      "inputArgumentsSchemaV2": null,
+      "outputArgumentsSchemaV2": null,
+      "type": "Agent",
+      "name": "Vendor Research agent",
+      "description": null,
+      "package": {
+        "key": "ea105e55-4bf8-4009-bc1e-2aa7bc1e9fde"
+      },
+      "packageName": "Invoice_Verification_Process.agent.Vendor.Research.agent",
+      "packageVersion": null,
+      "entryPointName": null,
+      "inputArguments": null,
+      "hiddenForAttendedUser": false,
+      "alwaysRunning": false,
+      "autoStartProcess": false,
+      "targetFrameworkValue": "Portable",
+      "agentMemory": false,
+      "environmentVariables": null,
+      "isConversational": false,
+      "retentionAction": "Delete",
+      "retentionPeriod": 30,
+      "retentionBucketRef": null,
+      "staleRetentionAction": "Delete",
+      "staleRetentionPeriod": 180,
+      "staleRetentionBucketRef": null,
+      "entryPoints": null,
+      "connections": null,
+      "tags": []
+    },
+    "locks": [],
+    "key": "1a2f3417-1b20-4914-a886-9bad8cb3850b"
+  }
+}

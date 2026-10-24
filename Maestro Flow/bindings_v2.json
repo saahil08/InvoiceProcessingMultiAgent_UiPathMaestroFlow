@@ -1,0 +1,160 @@
+{
+  "version": "2.0",
+  "resources": [
+    {
+      "resource": "connection",
+      "key": "b8e2cd0c-c2e2-4387-90be-a06806fccbef",
+      "id": "connectionb8e2cd0c-c2e2-4387-90be-a06806fccbef",
+      "value": {
+        "ConnectionId": {
+          "defaultValue": "b8e2cd0c-c2e2-4387-90be-a06806fccbef",
+          "isExpression": false,
+          "displayName": "uipath-google-gmail connection"
+        }
+      },
+      "metadata": {
+        "ActivityName": "Email Received",
+        "BindingsVersion": "2.2",
+        "DisplayLabel": "uipath-google-gmail connection",
+        "UseConnectionService": "true",
+        "Connector": "uipath-google-gmail"
+      }
+    },
+    {
+      "resource": "process",
+      "key": "690a4503-8b3d-4ea9-8283-57e1fc301f2a",
+      "id": "process690a4503-8b3d-4ea9-8283-57e1fc301f2a",
+      "value": {
+        "folderPath": {
+          "isExpression": false,
+          "displayName": "Folder path"
+        },
+        "name": {
+          "defaultValue": "DataExtractionAgent",
+          "isExpression": false,
+          "displayName": "Process name"
+        }
+      },
+      "metadata": {
+        "ActivityName": "DataExtractionAgent",
+        "BindingsVersion": "2.2",
+        "DisplayLabel": "name",
+        "SolutionsSupport": "true",
+        "subType": "Agent"
+      }
+    },
+    {
+      "resource": "Entity",
+      "key": "65af0b01-e5b9-f111-a6a9-000d3ab5dcae",
+      "id": "Entity65af0b01-e5b9-f111-a6a9-000d3ab5dcaePurchase_OrdersFalse",
+      "value": {
+        "name": {
+          "defaultValue": "Purchase_Orders",
+          "isExpression": false,
+          "displayName": "Entity"
+        },
+        "folderKey": {
+          "defaultValue": "adcd3c14-be29-43c5-b7e8-aea0c99111c2",
+          "isExpression": false
+        }
+      },
+      "metadata": {
+        "ActivityName": "Query entity records",
+        "BindingsVersion": "2.2",
+        "DisplayLabel": "Purchase_Orders",
+        "Scope": "Folder"
+      }
+    },
+    {
+      "resource": "process",
+      "key": "cfe8f0ab-fc5e-4cff-92d5-0b4aa3d4aa10",
+      "id": "processcfe8f0ab-fc5e-4cff-92d5-0b4aa3d4aa10",
+      "value": {
+        "folderPath": {
+          "isExpression": false,
+          "displayName": "Folder path"
+        },
+        "name": {
+          "defaultValue": "Discrepancy Investigation agent",
+          "isExpression": false,
+          "displayName": "Process name"
+        }
+      },
+      "metadata": {
+        "ActivityName": "DataExtractionAgent",
+        "BindingsVersion": "2.2",
+        "DisplayLabel": "name",
+        "SolutionsSupport": "true",
+        "subType": "Agent"
+      }
+    },
+    {
+      "resource": "process",
+      "key": "1a2f3417-1b20-4914-a886-9bad8cb3850b",
+      "id": "process1a2f3417-1b20-4914-a886-9bad8cb3850b",
+      "value": {
+        "folderPath": {
+          "isExpression": false,
+          "displayName": "Folder path"
+        },
+        "name": {
+          "defaultValue": "Vendor Research agent",
+          "isExpression": false,
+          "displayName": "Process name"
+        }
+      },
+      "metadata": {
+        "ActivityName": "DataExtractionAgent",
+        "BindingsVersion": "2.2",
+        "DisplayLabel": "name",
+        "SolutionsSupport": "true",
+        "subType": "Agent"
+      }
+    },
+    {
+      "resource": "EventTrigger",
+      "key": "b8e2cd0c-c2e2-4387-90be-a06806fccbef_d894f10c-1133-4d96-8fcc-7099a9ac2f1b",
+      "id": "EventTriggerb8e2cd0c-c2e2-4387-90be-a06806fccbef_d894f10c-1133-4d96-8fcc-7099a9ac2f1b",
+      "value": {
+        "ConnectionId": {
+          "defaultValue": "b8e2cd0c-c2e2-4387-90be-a06806fccbef",
+          "isExpression": false
+        },
+        "EntryPointUniqueId": {
+          "defaultValue": "d894f10c-1133-4d96-8fcc-7099a9ac2f1b",
+          "isExpression": false
+        }
+      },
+      "metadata": {
+        "UseConnectionService": "true",
+        "Connector": "uipath-google-gmail",
+        "ActivityName": "Email Received",
+        "BindingsVersion": "2.2",
+        "ObjectName": "Message",
+        "Operation": "EMAIL_RECEIVED",
+        "FilterExpression": "(ParentFolders[?ID=='INBOX'])"
+      }
+    },
+    {
+      "resource": "Property",
+      "key": "emailReceived2_d894f10c-1133-4d96-8fcc-7099a9ac2f1b",
+      "value": {
+        "ParentFolders[*].ID": {
+          "defaultValue": "INBOX",
+          "isExpression": false
+        }
+      },
+      "activityDisplayName": "connector-activity",
+      "metadata": {
+        "ActivityName": "Email Received",
+        "BindingsVersion": "2.2",
+        "ObjectName": "Message",
+        "Operation": "EMAIL_RECEIVED",
+        "ParentResourceKey": "EventTrigger.b8e2cd0c-c2e2-4387-90be-a06806fccbef_d894f10c-1133-4d96-8fcc-7099a9ac2f1b",
+        "TriggerCreateParameters": "ParentFolders[*].ID",
+        "DebugQueryParameters": "ParentFolders[*].ID"
+      },
+      "id": "Property_d894f10c-1133-4d96-8fcc-7099a9ac2f1b"
+    }
+  ]
+}
